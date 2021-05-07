@@ -48,3 +48,21 @@ Route::group([
 ],function($router){
     Route::post('edit',[\App\Http\Controllers\Api\UserController::class,'edit']);
 });
+
+Route::group([
+    'middleware'=>'api',
+    'namespace'=>'App\Http\Controllers',
+    'prefix'=>'slider'
+],function($router){
+    Route::get('',[\App\Http\Controllers\API\SliderController::class,'index']);
+});
+
+Route::group([
+    'middleware'=>'api',
+    'namespace'=>'App\Http\Controllers',
+    'prefix'=>'product'
+],function($router){
+    Route::get('/random',[\App\Http\Controllers\API\ProductController::class,'random']);
+    Route::get('/{barcode}',[\App\Http\Controllers\API\ProductController::class,'getByBarcode']);
+});
+
