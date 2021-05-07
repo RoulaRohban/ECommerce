@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group([
+    'middleware'=>'api',
+    'namespace'=>'App\Http\Controllers',
+    'prefix'=>'auth'
+],function($router){
+    Route::post('register',[\App\Http\Controllers\Api\AuthController::class,'register']);
+    Route::post('login',[\App\Http\Controllers\Api\AuthController::class,'login'])->name('login');
+    Route::post('verify',[\App\Http\Controllers\Api\AuthController::class,'verify']);
+    Route::post('resend_verify_code',[\App\Http\Controllers\Api\AuthController::class,'resend']);
+    Route::post('check_validity',[\App\Http\Controllers\Api\AuthController::class,'isValidToken'])->name('check_validity');
+});
 
 Route::group( [
     'namespace' => 'API',
