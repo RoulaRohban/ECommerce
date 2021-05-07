@@ -40,3 +40,11 @@ Route::group( [
     Route::get('favourites', 'FavouriteController@index');
     Route::post('favourites', 'FavouriteController@store');
 });
+
+Route::group([
+    'middleware'=>'api',
+    'namespace'=>'App\Http\Controllers',
+    'prefix'=>'user'
+],function($router){
+    Route::post('edit',[\App\Http\Controllers\Api\UserController::class,'edit']);
+});
