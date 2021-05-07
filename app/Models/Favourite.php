@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Favourite extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['created_at', 'updated_at','user'];
+    protected $with = ['product'];
 
     public function user()
     {
