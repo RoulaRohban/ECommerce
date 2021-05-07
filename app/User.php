@@ -2,6 +2,10 @@
 
 namespace App;
 
+use App\Models\Address;
+use App\Models\Favourite;
+use App\Models\Feedback;
+use App\Models\Order;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','phone'
     ];
 
     /**
@@ -36,5 +40,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    public function favourites(){
+        return $this->hasMany(Favourite::class);
+    }
+
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
 
 }

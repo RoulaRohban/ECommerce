@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use http\Client\Curl\User;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
