@@ -31,7 +31,7 @@ Route::group([
 
 Route::group( [
     'namespace' => 'API',
-    //'middleware' => 'auth:api'
+    'middleware' => 'auth:api'
 ], function()
 {
     Route::get('categories/parents', 'CategoryController@getParents');
@@ -39,6 +39,8 @@ Route::group( [
     Route::get('categories/{category_id}/products', 'ProductController@getByCategory');
     Route::get('favourites', 'FavouriteController@index');
     Route::post('favourites', 'FavouriteController@store');
+    Route::get('addresses', 'AddressController@index');
+    Route::post('addresses', 'AddressController@store');
 });
 
 Route::group([
