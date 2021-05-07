@@ -36,4 +36,7 @@ Route::group( [
 {
     Route::get('categories/parents', 'CategoryController@getParents');
     Route::get('categories/{parent_id}/child', 'CategoryController@getChild');
+    Route::get('categories/{category_id}/products', 'ProductController@getByCategory');
+    Route::get('favourites', 'FavouriteController@index');
+    Route::post('favourites', 'FavouriteController@store');
 });
